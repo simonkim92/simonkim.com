@@ -21,6 +21,7 @@ export default function Home() {
     setShowGallery(true); // 갤러리 다시 표시
   };
 
+  //
   return (
     <>
       <BackgroundOverlay
@@ -70,9 +71,7 @@ export default function Home() {
 
         {/* 나가기 버튼 */}
         {selectedProject && (
-          <ExitButton onClick={closeProject}>
-            나가기
-          </ExitButton>
+          <ExitButton onClick={closeProject}>나가기</ExitButton>
         )}
       </Main>
     </>
