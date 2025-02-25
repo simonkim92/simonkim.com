@@ -26,18 +26,19 @@ export default function Home() {
 
   return (
     <>
-      <BackgroundOverlay
+      {/* <BackgroundOverlay
         backgroundImage={backgroundImage}
         opacity={selectedProject ? 1 : 0} // 선택된 프로젝트가 있을 때만 보이도록 설정
-      />
+      /> */}
       <Main>
         <Header>
           <Name>Simon Kim</Name>
           <Navigator>
-            <NavButton>Info</NavButton>
-            <NavButton>Portfolio</NavButton>
+            <NavButton>INFO</NavButton>
+            <NavButton>PROJECTS</NavButton>
           </Navigator>
         </Header>
+        <SectionName>PROJECTS</SectionName>
         <Section>
           {
             <ProjectGallery>
@@ -45,33 +46,16 @@ export default function Home() {
                 <ProjectCard
                   key={project.id}
                   onClick={() => openProject(project)}
-                  onMouseEnter={() => {
-                    setHoveredProjectId(project.id); // 호버된 프로젝트 ID 설정
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredProjectId(null); // 호버된 프로젝트 ID 초기화
-                  }}
-                  style={{
-                    opacity:
-                      selectedProject && selectedProject.id !== project.id
-                        ? 0
-                        : 1,
-                    transition: 'opacity 0.5s ease-in-out',
-                  }}
                 >
-                  <ProjectImageContainer>
-                    <ProjectVideo src={project.video} autoPlay loop muted />
-                  </ProjectImageContainer>
-                  {selectedProject && selectedProject.id === project.id && (
-                    <ProjectTitle>{project.title}</ProjectTitle>
-                  )}
+                  <ProjectDate>January 2013</ProjectDate>
+                  <ProjectVideo src={project.video} autoPlay loop muted />
+                  <ProjectTitle>{project.title}</ProjectTitle>
+                  <Description>{project.description}</Description>
                 </ProjectCard>
               ))}
             </ProjectGallery>
           }
         </Section>
-
-        {/* 나가기 버튼 */}
         {exitButtonVisible && (
           <ExitButton onClick={closeProject}>나가기</ExitButton>
         )}
@@ -80,11 +64,31 @@ export default function Home() {
   );
 }
 
+export const Description = styled.div`
+  font-size: 15px;
+  color: rgb(178, 172, 162);
+  margin-bottom: 5px;
+  //font-family: Arial, Helvetica, sans-serif;
+`;
+export const ProjectDate = styled.div`
+  font-size: 10px;
+  margin-bottom: 5px;
+  color: rgb(178, 172, 162);
+  font-family: Arial, Helvetica, sans-serif;
+`;
+export const SectionName = styled.main`
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 46px;
+`;
 export const Main = styled.main`
   padding: 0px 40px;
   display: flex;
   flex-direction: column;
   color: #ffffff;
+  background-color: rgb(25, 27, 28);
   height: 100vh;
   transition: all 2s;
 `;
@@ -113,6 +117,8 @@ export const Header = styled.header`
 `;
 export const Section = styled.section`
   padding: 40px 0px;
+  display: flex;
+  justify-content: center;
 `;
 
 export const Title = styled.h1`
@@ -150,6 +156,7 @@ export const PlayArea = styled.section`
 `;
 
 export const ProjectGallery = styled.section`
+  max-width: 1000px;
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -158,12 +165,11 @@ export const ProjectGallery = styled.section`
 export const ProjectCard = styled.div`
   cursor: pointer;
   width: 238px;
-  height: 170px;
+  //max-height: 309px;
   border-radius: 8px;
-  background-color: #2a2a2a;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   overflow: hidden; /* 추가된 부분 */
   transition: all 1s;
   position: relative; /* 추가된 부분 */
@@ -177,29 +183,21 @@ export const ProjectCard = styled.div`
 
 export const ProjectImageContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 119px;
   position: relative; /* 추가된 부분 */
-  overflow: hidden; /* 동영상이 밖으로 안넘치도록 추가된 부분 */
 `;
 
 export const ProjectVideo = styled.video`
   width: 100%;
-  height: 100%; /* 변경된 부분 */
+  height: 119px;
   object-fit: cover; /* 추가된 부분 */
+  margin-bottom: 10px;
 `;
 
 export const ProjectTitle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-  height: 30px;
+  font-size: 35px;
   width: 100%;
-  position: absolute;
-  bottom: 0px;
   color: #ffffff; /* 텍스트 색상 */
-  background-color: #222222;
 `;
 
 export const ModalOverlay = styled.div`

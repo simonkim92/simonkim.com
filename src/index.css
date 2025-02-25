@@ -1,11 +1,18 @@
+@font-face {
+  font-family: 'ThaleahFat_TTF'; /* 원하는 폰트 이름 */
+  src: url('/public/fonts/ThaleahFat_TTF.ttf') format('truetype'); /* TTF 파일 경로 */
+  font-weight: normal; /* 필요에 따라 설정 */
+  font-style: normal; /* 필요에 따라 설정 */
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'ThaleahFat_TTF', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #121212;
+  background-color: rgb(25, 27, 28);
 }
 
 code {
