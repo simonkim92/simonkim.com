@@ -2,15 +2,8 @@ import styled from 'styled-components';
 import { projects } from './Projects';
 import { Link, useOutletContext } from 'react-router-dom';
 
-import {
-  FaReact,
-  FaNodeJs,
-  FaUnity,
-  FaPlusSquare,
-  FaCheckSquare,
-} from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaUnity, FaCheckSquare } from 'react-icons/fa';
 import { SiUnrealengine, SiJavascript, SiHtml5 } from 'react-icons/si';
-import { IoCube } from 'react-icons/io5';
 
 const skillIcons = {
   JavaScript: <SiJavascript />,
@@ -122,10 +115,7 @@ const ProjectTitle = styled.text`
   width: 100%;
   color: #ffffff;
 `;
-const CardHeader = styled.div`
-  /* display: flex;
-  align-items: center; */
-`;
+
 const Genre = styled.text`
   font-size: 13px;
   color: rgb(178, 172, 162);
