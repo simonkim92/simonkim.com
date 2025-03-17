@@ -1,18 +1,8 @@
 import styled from 'styled-components';
 import { projects } from './Projects';
 import { Link, useOutletContext } from 'react-router-dom';
-
-import { FaReact, FaNodeJs, FaUnity, FaCheckSquare } from 'react-icons/fa';
-import { SiUnrealengine, SiJavascript, SiHtml5 } from 'react-icons/si';
-
-const skillIcons = {
-  JavaScript: <SiJavascript />,
-  HTML5: <SiHtml5 />,
-  React: <FaReact />,
-  NodeJs: <FaNodeJs />,
-  Unity: <FaUnity />,
-  'Unreal Engine': <SiUnrealengine />,
-};
+import { FaCheckSquare } from 'react-icons/fa';
+import { Skills } from './Components/Skills';
 
 function ProjectList() {
   const { setSectionName } = useOutletContext();
@@ -46,14 +36,7 @@ function ProjectList() {
                 {desc}
               </Description>
             ))}
-            <SkillContainer>
-              {project.skills.map((skill) => (
-                <SkillTag key={skill}>
-                  {skillIcons[skill]}
-                  <span>{skill}</span>
-                </SkillTag>
-              ))}
-            </SkillContainer>
+            <Skills project={project} />
           </ProjectCard>
         ))}
       </ProjectGallery>
@@ -132,30 +115,4 @@ const Description = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-`;
-
-const SkillContainer = styled.div`
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-`;
-
-const SkillTag = styled.div`
-  display: flex;
-  gap: 5px;
-  background-color: #2a2d2e;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 20px;
-  color: #fff;
-  height: 24px;
-  letter-spacing: 0.3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  svg {
-    font-size: 16px;
-    overflow: visible;
-  }
 `;

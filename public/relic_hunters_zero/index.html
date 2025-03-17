@@ -1,40 +1,100 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Relic</title>
-  </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1280 height=720 tabindex="-1" style="width: 1280px; height: 720px; background: #231F20"></canvas>
-    <script src="Build/relic_hunters_zero.loader.js"></script>
-    <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Relic Hunters Zero Player</title>
+    <style>
+      @font-face {
+        font-family: 'ThaleahFat_TTF';
+        src: url('./ThaleahFat_TTF.ttf') format('truetype'); /* 현재 폴더 내 파일 */
+      }
+      /* html,
+      body {
+        width: 100%;
+        height: 100%;
+      } */
 
-        var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-        canvas.style.position = "fixed";
-
-        document.body.style.textAlign = "left";
+      body {
+        overflow: hidden;
+        text-align: center;
+        padding: 0;
+        border: 0;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
       }
 
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/relic_hunters_zero.data",
-        frameworkUrl: "Build/relic_hunters_zero.framework.js",
-        codeUrl: "Build/relic_hunters_zero.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Relic",
-        productVersion: "0.1",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
+      #startButton {
+        position: absolute;
+        z-index: 10;
+        padding: 15px 30px;
+        font-size: 40px;
+        cursor: pointer;
+        border: none;
+        background-color: rgb(210, 205, 195);
+        color: rgb(25, 27, 28);
+        transition: 0.3s;
+        font-family: 'ThaleahFat_TTF' !important;
+      }
+
+      #startButton:hover {
+        background-color: red;
+      }
+
+      #unity-canvas {
+        width: 100% !important;
+        height: 100% !important;
+        background: #231f20;
+        display: block;
+        border: none; /* 테두리 제거 */
+        outline: none; /* 포커스 테두리 제거 */
+      }
+    </style>
+  </head>
+  <body>
+    <button id="startButton">Game Start</button>
+    <canvas id="unity-canvas" width="1280" height="720" tabindex="-1"></canvas>
+
+    <script src="Build/relic_hunters_zero.loader.js"></script>
+    <script>
+      document
+        .getElementById('startButton')
+        .addEventListener('click', function () {
+          var canvas = document.querySelector('#unity-canvas');
+          canvas.style.display = 'block'; // 캔버스 표시
+          this.style.display = 'none'; // 버튼 숨기기
+
+          createUnityInstance(canvas, {
+            dataUrl: 'Build/relic_hunters_zero.data',
+            frameworkUrl: 'Build/relic_hunters_zero.framework.js',
+            codeUrl: 'Build/relic_hunters_zero.wasm',
+            streamingAssetsUrl: 'StreamingAssets',
+            companyName: 'DefaultCompany',
+            productName: 'Relic',
+            productVersion: '0.1',
+          }).then((unityInstance) => {
+            console.log('Unity WebGL 실행됨!');
+          });
+        });
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content =
+          'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+
+        var canvas = document.querySelector('#unity-canvas');
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.position = 'fixed';
+
+        document.body.style.textAlign = 'left';
+      }
     </script>
   </body>
 </html>

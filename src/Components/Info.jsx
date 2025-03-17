@@ -7,7 +7,6 @@ export const Info = () => {
     <DetailContainer>
       <InnerContainer>
         <Section>
-          <SectionTitle>Biography</SectionTitle>
           <BioGraphySection>
             <img width={400} src={'/images/snow.jpg'} />
             <div
@@ -74,6 +73,7 @@ export const Info = () => {
             </tbody>
           </ExperienceTable>
         </Section>
+        병역사항 학력사항
       </InnerContainer>
     </DetailContainer>
   );

@@ -24,6 +24,8 @@ export default function App() {
         setSectionName('Info');
       } else if (location.pathname === '/project/relichunterszero') {
         setSectionName('relic hunters zero');
+      } else if (location.pathname === '/project/metalslug2') {
+        setSectionName('Metal Slug 2');
       }
     }, [location]);
 

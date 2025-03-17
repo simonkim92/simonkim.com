@@ -4,6 +4,7 @@ export const projects = [
     date: 'January 2025',
     title: 'Relic Hunters Zero',
     video: '/relic_hunters_zero/video.mov',
+    VIDEO_ID: 'MAngPW7t4kw',
     youtubeUrl: 'https://www.youtube.com/embed/MAngPW7t4kw?si=uFvl5x-ZpuN7ASZz',
     images: [
       '/relic_hunters_zero/image.png',
@@ -51,8 +52,18 @@ export const projects = [
     date: 'March 2016',
     title: 'Metal Slug 2',
     video: '/metal_slug_2/video.mov',
-    youtubeUrl: 'https://youtu.be/ilYA-aTWyRk',
-    images: ['/metal_slug_2/image.png'],
+    VIDEO_ID: 'ilYA-aTWyRk',
+    youtubeUrl: 'https://www.youtube.com/embed/ilYA-aTWyRk?si=HoWikGon3OCnwd0q',
+    images: [
+      '/metal_slug_2/0.png',
+      '/metal_slug_2/1.png',
+      '/metal_slug_2/2.png',
+      '/metal_slug_2/4.png',
+      '/metal_slug_2/5.png',
+      '/metal_slug_2/6.png',
+      '/metal_slug_2/7.png',
+      '/metal_slug_2/8.png',
+    ],
     genre: 'Run and gun',
     description: [
       'multiple State machine',
@@ -61,7 +72,6 @@ export const projects = [
       'Cinematic Event',
       'Interaction with items',
     ],
-    buildUrl: '/metal_slug_2/index.html',
     skills: ['Win32', 'C++', '2D'],
   },
   {

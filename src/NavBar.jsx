@@ -78,8 +78,8 @@ const NavButton = styled.div`
   cursor: pointer;
   color: ${({ selected }) => (selected ? 'rgb(254, 39, 39)' : '#ffffff')};
   &:hover {
-    color: rgb(254, 39, 39);
+    color: red;
   }
-  //transition: all 0.5s;
+  transition: all 0.3s;
   letter-spacing: 0.5px;
 `;
