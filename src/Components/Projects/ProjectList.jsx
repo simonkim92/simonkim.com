@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { projects } from './Projects';
 import { Link, useOutletContext } from 'react-router-dom';
 import { FaCheckSquare } from 'react-icons/fa';
-import { Skills } from './Components/Skills';
+import { projects } from '../../Projects';
+import { Skills } from './Skills';
 
-function ProjectList() {
+export const ProjectList = () => {
   const { setSectionName } = useOutletContext();
 
   return (
@@ -42,11 +42,8 @@ function ProjectList() {
       </ProjectGallery>
     </Section>
   );
-}
+};
 
-export default ProjectList;
-
-// 🎨 스타일 정의
 const Section = styled.section`
   padding: 40px 0px;
   display: flex;

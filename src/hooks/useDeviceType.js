@@ -1,4 +1,3 @@
-// src/useDeviceType.js
 import { useState, useEffect } from 'react';
 
 export default function useDeviceType() {

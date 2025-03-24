@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { projects } from './Projects';
 import styled from 'styled-components';
-import { Skills } from './Components/Skills';
+import { Skills } from './Skills';
+import { projects } from '../../Projects';
 
 const ProjectDetail = () => {
   const { id } = useParams();

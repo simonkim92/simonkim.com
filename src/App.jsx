@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -7,9 +6,12 @@ import {
   useLocation,
 } from 'react-router-dom';
 import Home from './Home';
-import ProjectDetail from './ProjectDetail';
-import ProjectList from './ProjectList';
-import { Info } from './Components/Info';
+import ProjectDetail from './Components/Projects/ProjectDetail';
+
+import { Info } from './Components/Info/Info';
+import Blog from './Components/Blog/blogList';
+import { ProjectList } from './Components/Projects/ProjectList';
+import BlogPost from './Components/Blog/BlogPost';
 
 export default function App() {
   const [sectionName, setSectionName] = useState('PROJECTS');
@@ -21,7 +23,9 @@ export default function App() {
       if (location.pathname === '/') {
         setSectionName('PROJECTS');
       } else if (location.pathname === '/info') {
-        setSectionName('Info');
+        setSectionName('INFO');
+      } else if (location.pathname === '/blog') {
+        setSectionName('BLOG');
       } else if (location.pathname === '/project/relichunterszero') {
         setSectionName('relic hunters zero');
       } else if (location.pathname === '/project/metalslug2') {
@@ -40,6 +44,8 @@ export default function App() {
           <Route path="info" index element={<Info />} />
           <Route index element={<ProjectList />} />
           <Route path="project/:id" element={<ProjectDetail />} />
+          <Route path="blog" index element={<Blog />} />
+          <Route path="blog/:slug" element={<BlogPost />} />
         </Route>
       </Routes>
     );

@@ -4,19 +4,27 @@ import styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function NavBar() {
-  const [selectedNav, setSelectedNav] = useState('PROJECTS');
+  const [selectedNav, setSelectedNav] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
+    let newNav = '';
+
     if (location.pathname.includes('/project')) {
-      setSelectedNav('');
-    } else if (location.pathname.includes('/info')) {
-      setSelectedNav('INFO');
+      newNav = '';
+    } else if (location.pathname === '/info') {
+      newNav = 'INFO';
+    } else if (location.pathname === '/blog') {
+      newNav = 'BLOG';
     } else {
-      setSelectedNav('PROJECTS');
+      newNav = 'PROJECTS';
     }
-  }, [location.pathname]);
+
+    if (newNav !== selectedNav) {
+      setSelectedNav(newNav);
+    }
+  }, [location.pathname, selectedNav]);
 
   const handleNavClick = (nav) => {
     setSelectedNav(nav);
@@ -24,6 +32,8 @@ export default function NavBar() {
       navigate('/');
     } else if (nav === 'INFO') {
       navigate('/info');
+    } else if (nav === 'BLOG') {
+      navigate('/blog');
     }
   };
 
@@ -46,6 +56,12 @@ export default function NavBar() {
           selected={selectedNav === 'PROJECTS'}
         >
           PROJECTS
+        </NavButton>
+        <NavButton
+          onClick={() => handleNavClick('BLOG')}
+          selected={selectedNav === 'BLOG'}
+        >
+          BLOG
         </NavButton>
       </Navigator>
     </Header>
